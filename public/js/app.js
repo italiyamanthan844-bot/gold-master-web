@@ -54,6 +54,12 @@ function updateThemeIcon(theme) {
  */
 function init() {
     console.log("App Initializing...");
+
+    if (!linksContainer) {
+        console.error("Critical Error: 'links-container' not found in DOM.");
+        return;
+    }
+
     fetchLinks();
 }
 
@@ -87,7 +93,16 @@ function fetchLinks() {
         }
     }, (error) => {
         console.error("Firebase Error:", error);
-        linksContainer.innerHTML = `<div style="text-align:center; color: #ef4444;">Error loading data. Please check connection.</div>`;
+        if (linksContainer) {
+            linksContainer.innerHTML = `
+                <div style="text-align:center; color: #ef4444; padding: 20px;">
+                    <p><strong>Error loading data</strong></p>
+                    <p style="font-size: 0.9em;">${error.message}</p>
+                    <p style="font-size: 0.8em; margin-top: 10px; color: var(--text-secondary);">Please check your internet connection.</p>
+                </div>
+            `;
+        }
+        updateStatus("Connection Error");
     });
 }
 
@@ -147,5 +162,9 @@ function updateStatus(text) {
     lastUpdatedText.innerText = text;
 }
 
-// Start the app
-init();
+// Start the app when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
