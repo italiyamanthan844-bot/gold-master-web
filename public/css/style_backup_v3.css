@@ -1,0 +1,389 @@
+/* Google Fonts: Inter for a clean, professional utility look */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- THEME VARIABLES --- */
+:root {
+    /* Default: Light Mode - Clean & Crisp */
+    --bg-body: #F3F4F6;
+    --bg-card: #FFFFFF;
+    --bg-header: #FFFFFF;
+    --text-primary: #111827;
+    --text-secondary: #6B7280;
+    --border-color: #E5E7EB;
+
+    --primary-color: #CA8A04;
+    /* Muted Gold/Bronze */
+    --primary-bg: #FEF9C3;
+
+    --success-color: #10B981;
+    --success-bg: #D1FAE5;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+    --radius-full: 9999px;
+    --radius-md: 12px;
+}
+
+[data-theme="dark"] {
+    /* Dark Mode - Slate/Professional */
+    --bg-body: #0B0E14;
+    /* Almost black */
+    --bg-card: #151921;
+    /* Dark Gray */
+    --bg-header: #151921;
+    --text-primary: #F9FAFB;
+    --text-secondary: #9CA3AF;
+    --border-color: #2D3340;
+
+    --primary-color: #FACC15;
+    /* Brighter Gold */
+    --primary-bg: rgba(250, 204, 21, 0.15);
+
+    --success-color: #34D399;
+    --success-bg: rgba(52, 211, 153, 0.15);
+}
+
+/* --- RESET & BASE --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    max-width: 600px;
+    /* Narrower for mobile-first feel */
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* --- HEADER --- */
+.app-header {
+    background: var(--bg-header);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    /* Always white inside icon */
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.brand h1 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    transition: background-color 0.2s;
+}
+
+.theme-toggle:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* --- BANNER / HERO --- */
+.hero {
+    padding: 24px 0;
+    text-align: left;
+    /* Aligned left for list-view feel */
+}
+
+.hero h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.hero p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    color: #fff;
+    /* White text on button */
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    transition: opacity 0.2s;
+}
+
+[data-theme="light"] .btn-primary {
+    color: #fff;
+}
+
+[data-theme="dark"] .btn-primary {
+    color: #000;
+    /* Dark text on bright gold */
+}
+
+.btn-primary:active {
+    opacity: 0.8;
+}
+
+/* --- LIST VIEW (Mobile Optimized) --- */
+.main-content {
+    margin-bottom: 60px;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-top: 10px;
+}
+
+.section-head h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* The List Grid - actually a vertical stack now */
+.links-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* THE LIST ITEM (Replacing large cards) */
+.list-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: background-color 0.2s;
+}
+
+/* Active State for Touch */
+.list-item:active {
+    background-color: var(--bg-body);
+}
+
+.item-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+    /* Text truncation fix */
+}
+
+.item-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--primary-bg);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    color: var(--primary-color);
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.item-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.btn-collect {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.1s;
+    text-align: center;
+    min-width: 80px;
+}
+
+[data-theme="dark"] .btn-collect {
+    color: #000;
+}
+
+.btn-collect:active {
+    transform: scale(0.95);
+}
+
+.btn-collect.collected {
+    background: var(--success-bg);
+    color: var(--success-color);
+    pointer-events: none;
+    border: 1px solid var(--success-color);
+}
+
+/* --- ADS --- */
+.ad-slot {
+    width: 100%;
+    height: 60px;
+    /* Smaller, banner size */
+    background: var(--bg-card);
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+/* --- FOOTER --- */
+footer {
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+    padding: 30px 0;
+    text-align: center;
+    background: var(--bg-header);
+}
+
+.footer-link {
+    color: var(--text-secondary);
+    margin: 0 12px;
+    font-size: 0.85rem;
+}
+
+/* --- LOADING SKELETON --- */
+.skeleton {
+    height: 80px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, var(--bg-body), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Mobile Tweaks */
+@media (max-width: 400px) {
+    .item-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .item-left {
+        gap: 12px;
+    }
+
+    .btn-collect {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
